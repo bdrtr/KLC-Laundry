@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "483933935392",
+    "firebase_url": "https://klclaundry-f42ea-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "klclaundry-f42ea",
+    "storage_bucket": "klclaundry-f42ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483933935392:android:b5a0e0bb9f1ebac826e945",
+        "android_client_info": {
+          "package_name": "com.example.klclaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483933935392-q1htgoa14ai2dm7tcfbnldi15kh7bbun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF85gi9hHeEImcBFESHh9xerwWl1i4Cso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483933935392-q1htgoa14ai2dm7tcfbnldi15kh7bbun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483933935392:android:a5868025fc9eba5d26e945",
+        "android_client_info": {
+          "package_name": "com.kilicarslan.KLC"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483933935392-q1htgoa14ai2dm7tcfbnldi15kh7bbun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF85gi9hHeEImcBFESHh9xerwWl1i4Cso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483933935392-q1htgoa14ai2dm7tcfbnldi15kh7bbun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
