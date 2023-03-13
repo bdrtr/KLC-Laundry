@@ -1,12 +1,15 @@
 package com.kilicarslan.KLC.MainPages;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.client.android.Intents;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 import com.kilicarslan.KLC.Adaptors.FirebaseAdaptor;
 import com.kilicarslan.KLC.Adaptors.UserAdaptor;
 import com.kilicarslan.KLC.CardViews.UsersCardView;
@@ -43,6 +49,21 @@ public class HomeFragment extends Fragment {
     private pushNotService notif;
     private UserAdaptor user,currentUser;
     private ArrayList<UserAdaptor> allUsers = new ArrayList<>();
+
+    private  ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult( new ScanContract(),
+    result -> {
+        if (result.getContents().equals("sira_istiyorum")) {
+            Toast.makeText(getContext(), "sıradasınız: ",Toast.LENGTH_SHORT).show();
+            UserAdaptor user = new UserAdaptor(name,0,id);
+            addFloating.setVisibility(View.INVISIBLE);
+            firebaseAdaptor.add(user);
+
+        } else {
+            Toast.makeText(getContext(),"hatalı qr",Toast.LENGTH_SHORT).show();
+        }
+    });
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,8 +112,18 @@ public class HomeFragment extends Fragment {
         StateImg.setVisibility(View.VISIBLE);
         addFloating.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.INVISIBLE);
+
     }
 
+    protected void barcodeOptions() {
+        ScanOptions options = new ScanOptions();
+        options.setDesiredBarcodeFormats(ScanOptions.ONE_D_CODE_TYPES);
+        options.setPrompt("sıraya girmek için qr kodu okut");
+        options.setCameraId(0);
+        options.setBeepEnabled(true);
+        options.setBarcodeImageEnabled(true);
+        barcodeLauncher.launch(options);
+    }
     protected void initializeForAdmin() {
         homeText.setVisibility(View.INVISIBLE);
         StatementText.setVisibility(View.INVISIBLE);
@@ -104,18 +135,18 @@ public class HomeFragment extends Fragment {
     protected boolean IsAdmin() {
         return id.equals("admin");
     }
-
     protected void events() {
 
         addFloating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (currentUser.getStatement() != -1) {
+                    //barcodeLauncher.launch(new ScanOptions());
                     Toast.makeText(getContext(),R.string.alreadyInProcess,Toast.LENGTH_SHORT).show();
                 } else {
-                    UserAdaptor user = new UserAdaptor(name,0,id);
-                    addFloating.setVisibility(View.INVISIBLE);
-                    firebaseAdaptor.add(user);
+                    //barcodeOptions();
+                    barcodeLauncher.launch(new ScanOptions());
                 }
 
             }
@@ -129,7 +160,6 @@ public class HomeFragment extends Fragment {
                     firebaseAdaptor.remove(currentUser.getId());
                     addFloating.setVisibility(View.VISIBLE);
                     initialize();
-
 
                 }
 

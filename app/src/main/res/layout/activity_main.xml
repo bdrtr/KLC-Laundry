@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer"
+    android:backgroundTint="@color/mavi2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#03045E"
@@ -13,14 +14,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#edf2f4"
         tools:context=".MainPages.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:layout_height="30dp"
+            android:background="@color/mavi2"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +32,8 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="56dp"
-            android:layout_marginBottom="55dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="59dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,23 +45,27 @@
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bebekmavi"
+            android:background="@color/mavi2"
             app:itemHorizontalTranslationEnabled="true"
             app:itemIconTint="@color/yenibeyaz"
             app:itemTextColor="@color/yenibeyaz"
             app:labelVisibilityMode="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FragmentNav"
+            app:layout_constraintVertical_bias="1.0"
             app:menu="@menu/bottom_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:background="@drawable/side_menu_back"
+        app:itemTextColor="@color/yenibeyaz"
         android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#edf2f4"
-        app:menu="@menu/yan_menu"/>
+        app:menu="@menu/yan_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

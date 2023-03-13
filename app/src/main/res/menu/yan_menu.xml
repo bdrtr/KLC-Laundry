@@ -22,4 +22,10 @@
         android:icon="@android:drawable/ic_lock_power_off"
         android:title="oturumu kapat"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/qrCode"
+        android:icon="@drawable/ic_baseline_qr_code_24"
+        android:title="qr code oluştur"
+        app:showAsAction="always"
+     />
 </menu>

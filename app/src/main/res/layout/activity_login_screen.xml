@@ -4,33 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backgroundLogin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".LOGSCREEN.loginScreen">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.1"
-        android:background="#edf2f4"
+        android:background="@drawable/new_loginscreen"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/loginscreen"
         tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/logScreenText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginBottom="105dp"
-        android:text="@string/loginUpText"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/logScreenUsername"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/logScreenUsername"
@@ -60,9 +45,12 @@
 
     <Button
         android:id="@+id/logScreenLoginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
         android:layout_marginBottom="136dp"
+        android:background="@drawable/button_back"
         android:text="GİRİŞ YAP"
         app:layout_constraintBottom_toTopOf="@+id/logScreenUnderText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,9 +70,13 @@
 
     <Button
         android:id="@+id/logScreenSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
         android:layout_marginBottom="19dp"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/white"
         android:text="KAYIT OL"
         app:layout_constraintBottom_toTopOf="@+id/logScreenLoginButton"
         app:layout_constraintEnd_toEndOf="parent"

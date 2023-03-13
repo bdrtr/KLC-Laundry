@@ -34,6 +34,7 @@ public class loginScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_KLCLaundry);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
@@ -101,7 +102,7 @@ public class loginScreen extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         logButton.setText(R.string.log_in);
         signUp.setText(R.string.sign_up);
-        upPageText.setText(R.string.loginUpText);
+        //upPageText.setText(R.string.loginUpText);
         downPageText.setText(R.string.loginDownText);
         downPageText.setClickable(true);
         userNameText.setText(pService.get("email",""));
@@ -111,7 +112,7 @@ public class loginScreen extends AppCompatActivity {
     protected void definitions() {
         progressBar = findViewById(R.id.progressBar);
         logButton = findViewById(R.id.logScreenLoginButton);
-        upPageText = findViewById(R.id.logScreenText);
+        //upPageText = findViewById(R.id.logScreenText);
         downPageText = findViewById(R.id.logScreenUnderText);
         userNameText = findViewById(R.id.logScreenUsername);
         passwordText = findViewById(R.id.logScreenPassword);

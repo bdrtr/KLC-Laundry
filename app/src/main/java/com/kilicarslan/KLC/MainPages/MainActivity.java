@@ -11,11 +11,17 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.kilicarslan.KLC.Adaptors.FirebaseAdaptor;
+import com.kilicarslan.KLC.MainPages.SideMenu.QRimage;
 import com.kilicarslan.KLC.MainPages.SideMenu.changePage;
 import com.kilicarslan.KLC.R;
 import com.kilicarslan.KLC.Services.PreferenceService;
@@ -66,6 +72,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    protected void specialForAdmin(MenuItem item) {
+        openCounter++;
+        Log.i("user::",pService.get("id",""));
+        Log.i("opencounter:",String.valueOf(openCounter));
+        if (pService.get("id","").equals("admin")) {
+            FirebaseAdaptor firebaseAdaptor = new FirebaseAdaptor();
+            if (openCounter % 2 == 0) {
+                pService.pushInt("openorclose", 0);
+                firebaseAdaptor.LaundryOpenOrClose(false);
+                item.setTitle(R.string.laundryStateClose);
+                item.setIcon(R.drawable.ic_baseline_lock_24);
+                //pService.connect(); //henüz hazır değil
+            } else {
+                pService.pushInt("openorclose", 1);
+                firebaseAdaptor.LaundryOpenOrClose(true);
+                item.setTitle(R.string.laundryStateOpen);
+                item.setIcon(R.drawable.ic_baseline_lock_open_24);
+            }
+        }
+
+        else {
+            Toast.makeText(getApplicationContext(),"sen admin değilsin??",Toast.LENGTH_SHORT).show();
+        }
+
+        return;
+    }
+
     protected void events() {
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -85,28 +118,13 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.openOrClose:
-                        openCounter++;
-                        Log.i("user::",pService.get("id",""));
-                        Log.i("opencounter:",String.valueOf(openCounter));
-                        assert pService.get("id","").equals("admin");
-                        if (pService.get("id","").equals("admin")) {
-                            FirebaseAdaptor firebaseAdaptor = new FirebaseAdaptor();
-                            if (openCounter%2==0) {
-                                pService.pushInt("openorclose",0);
-                                firebaseAdaptor.LaundryOpenOrClose(false);
-                                item.setTitle(R.string.laundryStateClose);
-                                item.setIcon(R.drawable.ic_baseline_lock_24);
-                                //pService.connect(); //henüz hazır değil
-                            } else {
-                                pService.pushInt("openorclose",1);
-                                firebaseAdaptor.LaundryOpenOrClose(true);
-                                item.setTitle(R.string.laundryStateOpen);
-                                item.setIcon(R.drawable.ic_baseline_lock_open_24);
-                            }
-                        }
+                        specialForAdmin(item);
                         break;
 
-
+                    case R.id.qrCode:
+                        if (pService.get("id","").equals("admin"))
+                            startActivity(new Intent(getApplicationContext(), QRimage.class));
+                        break;
                 }
 
 

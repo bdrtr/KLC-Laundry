@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:background="@drawable/main_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/HomeUsersList"
             android:layout_width="match_parent"
@@ -24,7 +33,7 @@
             android:layout_height="46dp"
             android:layout_marginBottom="40dp"
             android:text="@string/laundryStateClose"
-            android:textColor="@color/mavi4"
+            android:textColor="@color/yenibeyaz"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/homeView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +69,7 @@
             android:layout_marginEnd="63dp"
             android:layout_marginBottom="92dp"
             android:clickable="true"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/ic_baseline_qr_code_24"
             app:backgroundTintMode="add"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"

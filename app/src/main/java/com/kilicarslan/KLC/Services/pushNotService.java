@@ -22,6 +22,7 @@ public class pushNotService {
     public pushNotService(Context cnt) {
         this.cnt = cnt;
     }
+    public pushNotService(){};
 
     public void send() {
 
